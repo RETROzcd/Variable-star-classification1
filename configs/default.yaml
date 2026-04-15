@@ -1,0 +1,33 @@
+# 基本配置
+experiment:
+  name: "tri_modal_v1"
+  save_dir: "./checkpoints"
+  log_dir: "./logs"
+
+data:
+  img_dir: "img/"
+  label_file: "lightcurve_data.csv"
+  raw_data_file: "./data/raw_data/data_zr_cleaned.csv"
+  img_size: [1000, 600]
+  patch_size: [50, 30]
+  batch_size: 16
+
+model:
+  d_model: 256
+  temporal_dim: 128
+  num_classes: 15
+  fusion_dim: 384
+  nhead: 8
+  project_img: true
+  num_layers: 4
+
+training:
+  epochs: 18
+  lr: 3e-4
+  weight_decay: 1e-5
+  mixed_precision: True  # 是否使用混合精度训练
+
+preprocess:
+  ts_length: 512
+  noise_threshold: 0.15
+  smoothing_method: "adaptive"
